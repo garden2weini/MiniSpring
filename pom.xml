@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.merlin</groupId>
+    <artifactId>mini-spring</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <servlet.api.version>2.4</servlet.api.version>
+    </properties>
+
+    <dependencies>
+        <!-- required start -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>ROOT</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.30.v20200611</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                        <descriptor>${project.basedir}/src/main/resources/web.xml</descriptor>
+                    </webApp>
+                    <!-- scanIntervalSeconds 配置扫描时间时间, 如果有文件变动, 如pom.xml,web.xml或classes, 则jetty会重新加载应用 -->
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <supportedPackagings>jar</supportedPackagings>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
