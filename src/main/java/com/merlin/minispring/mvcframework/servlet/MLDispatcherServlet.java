@@ -19,6 +19,11 @@ import java.net.URL;
 import java.util.*;
 import java.util.Map.Entry;
 
+/**
+ * 当Servlet容器启动时，会调用GPDispatcherServlet的init()方法，
+ * 从init方法的参数中，可以拿到主配置文件的路径，从能够读取到配置文件中的信息。
+ * 现在完成(Spring的三个阶段中)初始化阶段的代码。
+ */
 public class MLDispatcherServlet extends HttpServlet {
 
     private static final long serialVersionUID = -1029760016507746890L;
